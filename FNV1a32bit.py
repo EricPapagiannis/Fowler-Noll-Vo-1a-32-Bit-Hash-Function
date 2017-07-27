@@ -37,5 +37,5 @@ for line in file_object:
     albert_index = FNV1a32bit("Albert") % 7
     # Second letter is a, the collision will occur when my_index == 3
     if line[1] == last_name[1] and my_index == albert_index:
-        print(line.strip(), index)
+        print(line.strip(), my_index)
 
