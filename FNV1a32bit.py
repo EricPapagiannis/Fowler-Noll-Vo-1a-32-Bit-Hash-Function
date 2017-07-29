@@ -16,13 +16,23 @@ def FNV1a32bit(name):
         c = ((c ^ ord(char)) * 16777619) % (2 ** 32)
     return c
 
-print("Albert: " + str(FNV1a32bit("Albert") % 7))
-print("Danielle: " + str(FNV1a32bit("Danielle") % 7))
-print("Igor: " + str(FNV1a32bit("Igor") % 7))
-print("Felix: " + str(FNV1a32bit("Felix") % 7))
-print("Manfred: " + str(FNV1a32bit("Manfred") % 7))
-print("Olive: " + str(FNV1a32bit("Olive") % 7))
-print("Walter: " + str(FNV1a32bit("Walter") % 7))
+print("Albert: " + str(FNV1a32bit("Albert") % 7))     # Albert   -> 3
+print("Danielle: " + str(FNV1a32bit("Danielle") % 7)) # Danielle -> 1
+print("Igor: " + str(FNV1a32bit("Igor") % 7))         # Igor     -> 2
+print("Felix: " + str(FNV1a32bit("Felix") % 7))       # Felix    -> 2
+print("Manfred: " + str(FNV1a32bit("Manfred") % 7))   # Manfred  -> 2
+print("Olive: " + str(FNV1a32bit("Olive") % 7))       # Olive    -> 1
+print("Walter: " + str(FNV1a32bit("Walter") % 7))     # Walter   -> 1
+'''
+The hash table:
+[0]
+[1]->[Danielle]->[Olive]->[Walter]
+[2]->[Igor]->[Felix]->[Manfred]
+[3]->[Albert]
+[4]
+[5]
+[6]
+'''
 
 '''
 3b
@@ -38,4 +48,5 @@ for line in file_object:
     # Second letter is a, the collision will occur when my_index == 3
     if line[1] == last_name[1] and my_index == albert_index:
         print(line.strip(), my_index)
-
+# The word I pick is Paula, when hashed, Paula is 3, which collides with Albert,
+# and has the same second letter as my last name's, "a".
